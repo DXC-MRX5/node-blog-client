@@ -18,7 +18,7 @@ const Fitness = () => {
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topfit")
     .then((response)=>{
       setTop(response.data);
-      setIsLoading(!isLoading);
+      setIsLoading(prevLoading => !prevLoading);
     })
     .catch((error)=>console.log(error))
   }, [])

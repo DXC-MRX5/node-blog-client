@@ -23,7 +23,7 @@ const Display = () => {
       .catch((error)=>console.log(error))
     }
     fetchData();
-    },[])
+    },[Data])
   useEffect(()=>{
     async function fetchMoreData(){
       await axios.get("https://node-blog-server-nzei.onrender.com/api/blog/more")

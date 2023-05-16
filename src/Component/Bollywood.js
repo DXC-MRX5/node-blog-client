@@ -14,14 +14,15 @@ const Bollywood = () => {
     })
     .catch((error)=>console.log(error))
   }, [])
-  useEffect(()=>{
+  useEffect(() => {
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topbolly")
-    .then((response)=>{
-      setTop(response.data);
-      setIsLoading(!isLoading);
-    })
-    .catch((error)=>console.log(error))
-  }, [])
+      .then((response) => {
+        setTop(response.data);
+        setIsLoading(prevLoading => !prevLoading);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  
   const [load,setLoad]=useState(true)
   const loadMore=()=>{
     setLoad(!load);

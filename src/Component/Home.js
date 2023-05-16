@@ -21,7 +21,7 @@ const Home = () => {
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/latest")
     .then((response)=>{
       setLatest(response.data);
-      setIsLoading(!isLoading);
+      setIsLoading(prevLoading => !prevLoading);
     })
     .catch((error)=>console.log(error))
   }, [])
