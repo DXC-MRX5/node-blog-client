@@ -1,38 +1,618 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.App{
+    background-color: #a6d1bd;
+    padding-bottom: 5vh;
+}
+.header-cntnr {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.heading{
+    width: 10%;
+    display: flex;
+    gap: 2px;
+    margin: auto;
+}
+.heading h1{
+    border: 2px solid black;
+    padding: 2px;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: white;
+}
+.heading h2{
+    color: white;
+    background-color: black;
+    padding: 4px;
+    font-family: 'Alkatra', cursive;
+    rotate: -90deg;
+}
+.links{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    border-bottom: 3px solid #05386B;
+}
+.mobileNav{
+    display: none;
+}
+.abc{
+    text-decoration: none;
+    color: #063f12;
+}
+.abc:hover{
+    color: #ad5237;
+}
+.def{
+    color: whitesmoke;
+}
+.getbox{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    padding: 10px;
+    color: green;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    border: 2px solid green;
+}
+.Home{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    justify-content: center;
+}
+.Home-cntnr{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.adBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 1000px;
+    border: 2px solid #05386B;
+}
+.home-catagory-cntnr h1{
+    width: 200px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #05386B;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #05386B;
+    margin-bottom: 80px;
+}
+.latest-cntnr{
+    width: 100%;
+    height: 350px;
+}
+.latest-cntnr h1{
+    width: 200px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #05386B;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #05386B;
+    margin-bottom: 30px;
+    margin-left: 20vw;
+}
+.btndiv{
+    position: relative;
+    top: 30px;
+}
+.latest-element{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:400px;
+    text-align: center;
+}
+.before{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    animation: leftswipe 1s ease;
+}
+@keyframes leftswipe{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+.after{
+        width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: absolute;
+    animation: rightswipe 1s ease;
+}
+@keyframes rightswipe {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+.latest-poster{
+    width: 250px;
+    height: 150px;
+    box-shadow: 5px 5px 10px #05386B;
+}
+.latestBox{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+}
+.latestBox h4{
+    font-weight: lighter;
+}
+.home-catagory-element{
+    margin: 5vh;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+}
+.topicBox{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+}
+.topicBox h4, .topicBox h5{
+    font-weight: lighter;
+}
+.ver-title{
+    font-size: 20px;
+}
+.slides{
+    width: 40vw;
+    height: 26vw;
+    border-radius: 10px;
+    box-shadow: 10px 10px 8px rgb(5, 39, 73);
+}
+.slide-cntnr{
+    margin-top: 20px;
+    display: flex;
+    gap: 2vw;
+}
+.staticHolder{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+.staticimage{
+    width: 18vw;
+    height: 12vw;
+    border-radius: 5px;
+    box-shadow: 8px 8px 4px rgb(65, 62, 62);
+}
+.top-cntnr{
+    margin-top: 100px;
+}
+.top-cntnr h1{
+    width: 150px;
+    padding-bottom: 15px;
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+    border-bottom: 3px solid #05386B;
+}
+.topBox{
+    width: 400px;
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+.topBox h2{
+    font-size: 70px;
+    font-family:  'Ubuntu', sans-serif;
+    color: rgb(222, 224, 210);
+}
+.top-poster{
+    width: 130px;
+    height: 90px;
+    border: 2px solid #05386B;
+    box-shadow: 3px 8px 3px #063f12;
+}
+.topTopic{
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+}
+.Bollywood{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.Hollywood{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.Food{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.Fitness{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.Tech{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.catagory-leftPart{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.catagory-heading{
+    width: 160px;
+    margin-top: 30px;
+    padding-bottom: 15px;
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+    border-bottom: 3px solid #05386B;
+}
+.catagory-element{
+    margin: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    animation: upSwipe 1.5s ease;
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+}
+@keyframes upSwipe{
+    0%{
+        transform: translateY(100vw);
+    }
+    100%{
+        transform: translateY(0vw);
+    }
+}
+.catagory-element-new{
+    margin: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    animation: downSwipe 1.5s ease;
+    font-family:  'Ubuntu', sans-serif;
+    color: #05386B;
+}
+@keyframes downSwipe{
+    0%{
+        transform: translateY(-100vw);
+    }
+    100%{
+        transform: translateY(0vw);
+    }
+}
+.catagory-poster{
+    width: 250px;
+    height: 150px;
+    box-shadow: 5px 10px 8px #05386B;
+}
+.catagory-btndiv{
+    position: relative;
+    left: 550px;
+}
+.catagory-adBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 500px;
+    border: 2px solid #05386B;
+    margin-top: 50px;
+}
+.Actualdata{
+    width: 90%;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 50px;
+    color: #05386B;
+}
+.dscrptn{
+    width: 60vw;
+    font-size: 15px;
+    line-height: 30px;
+}
+.prcs{
+    width: 60vw;
+    font-size: 15px;
+    line-height: 30px;
+}
+.Actualdata .dscrptn::first-letter{
+    font-size: 300%;
+    color: red;
+}
+.moreBox{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.more-element{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.more-heading{
+    width: 250px;
+    padding-bottom: 10px;
+    margin: 50px;
+    font-family: 'Raleway', sans-serif;
+    color: #05386B;
+    border-bottom: 3px solid #05386B;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only screen and (max-width:850px) {
+    .header-cntnr {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 30px;
+    }
+    .links{
+        display: none;
+    }
+    .getbox{
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        padding: 5px;
+        color: green;
+        font-size: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        border: 2px solid green;
+    }
+    .moblinks{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 30px;
+        border-bottom: 3px solid #05386B;
+    }
+    .mobileNav{
+        width: 100%;
+        display: inline-block;
+    }
+    .downon{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .downoff{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn{
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+        margin: 40px;
+    }
+    .mnbtn{
+        animation: rotation 1s ease;
+    }
+    @keyframes rotation {
+        0%{
+            transform: rotateZ(180deg);
+        }
+        100%{
+            transform: rotateZ(0deg);
+        }
+    }
+    .clsbtn{
+        animation: antirotation 1s ease;
+    }
+    @keyframes antirotation {
+        0%{
+            transform: rotateZ(-180deg);
+        }
+        100%{
+            transform: rotateZ(0deg);
+        }
+    }
+    .before{
+        width: 100%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-bottom: 300px;
+        animation: leftswipe 1s ease;
+    }
+    @keyframes leftswipe{
+        0%{
+            transform: translateX(-100%);
+        }
+        100%{
+            transform: translateX(0%);
+        }
+    }
+    .after{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        margin-bottom: 300px;
+        animation: rightswipe 1s ease;
+    }
+    @keyframes rightswipe {
+        0%{
+            transform: translateX(100%);
+        }
+        100%{
+            transform: translateX(0%);
+        }
+    }
+    .Home-cntnr{
+        margin-top: 500px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .btndiv{
+        position: relative;
+        top:520px;
+    }
+    .catagory-poster{
+        width: 150px;
+        height: 80px;
+        box-shadow: 5px 10px 8px #05386B;
+    }
+    .latest-element{
+        margin-top: 20px;
+        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width:80%;
+        text-align: center;
+    }
+    .latest-poster{
+        width: 50%;
+        height: 35%;
+        box-shadow: 5px 5px 10px #05386B;
+    }
+    .adBox{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: 60vh;
+        border: 2px solid #05386B;
+    }
+    .topBox{
+        width: 90%;
+        margin-top: 30px;
+        margin-left: 5%;
+        display: flex;
+        gap: 20px;
+    }
+    .topBox h2{
+        font-size: 70px;
+        font-family:  'Ubuntu', sans-serif;
+        color: rgb(222, 224, 210);
+    }
+    .top-poster{
+        width: 130px;
+        height: 90px;
+        border: 2px solid #05386B;
+        box-shadow: 3px 8px 3px #063f12;
+    }
+    .topTopic{
+        font-family:  'Ubuntu', sans-serif;
+        color: #05386B;
+    }
+    .Bollywood{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .Hollywood{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .Food{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .Fitness{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .Tech{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .catagory-leftPart{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #05386B;
+    }
+    .catagory-btndiv{
+        position: absolute;
+        left: 20vw;
+    }
+    .cntxtdata-cntnr{
+        width: 100%;
+    }
+    .moreBox{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #05386B;
+        gap: 20px;
+    }
+    .more-element{
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #063f12;
+    }
 }
