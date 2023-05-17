@@ -8,14 +8,14 @@ const Food = () => {
   const [top, setTop] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/food")
+    axios.get("https://node-blog-server.vercel.app/api/blog/food")
     .then((response)=>{
       setData(response.data);
     })
     .catch((error)=>console.log(error))
   }, [])
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topfood")
+    axios.get("https://node-blog-server.vercel.app/api/blog/topfood")
     .then((response)=>{
       setTop(response.data);
       setIsLoading(prevLoading => !prevLoading);

@@ -8,14 +8,14 @@ const Bollywood = () => {
   const [top, setTop] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/bollywood")
+    axios.get("https://node-blog-server.vercel.app/api/blog/bollywood")
     .then((response)=>{
       setData(response.data);
     })
     .catch((error)=>console.log(error))
   }, [])
   useEffect(() => {
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topbolly")
+    axios.get("https://node-blog-server.vercel.app/api/blog/topbolly")
       .then((response) => {
         setTop(response.data);
         setIsLoading(prevLoading => !prevLoading);

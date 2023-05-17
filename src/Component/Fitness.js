@@ -8,14 +8,14 @@ const Fitness = () => {
   const [top, setTop] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/fitness")
+    axios.get("https://node-blog-server.vercel.app/api/blog/fitness")
     .then((response)=>{
       setData(response.data);
     })
     .catch((error)=>console.log(error))
   }, [])
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topfit")
+    axios.get("https://node-blog-server.vercel.app/api/blog/topfit")
     .then((response)=>{
       setTop(response.data);
       setIsLoading(prevLoading => !prevLoading);

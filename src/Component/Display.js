@@ -15,7 +15,7 @@ const Display = () => {
   const [gen, setGen] = useState();
   useEffect(()=>{
     async function fetchData(){
-      await axios.get(`https://node-blog-server-nzei.onrender.com/api/blog/actual?id=${Data}`)
+      await axios.get(`https://node-blog-server.vercel.app/api/blog/actual?id=${Data}`)
       .then((response)=>{
         setData(response.data);
         setGen(response.data[0].gen);
@@ -26,7 +26,7 @@ const Display = () => {
     },[Data])
   useEffect(()=>{
     async function fetchMoreData(){
-      await axios.get("https://node-blog-server-nzei.onrender.com/api/blog/more")
+      await axios.get("https://node-blog-server.vercel.app/api/blog/more")
       .then((response)=>{
         setMore(response.data)
       })

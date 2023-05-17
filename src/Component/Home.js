@@ -12,13 +12,13 @@ const Home = () => {
   const [latest, setLatest] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/home")
+    axios.get("https://node-blog-server.vercel.app/api/blog/home")
     .then((response)=>{
       setData(response.data);
     })
   }, [])
   useEffect(()=>{
-    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/latest")
+    axios.get("https://node-blog-server.vercel.app/api/blog/latest")
     .then((response)=>{
       setLatest(response.data);
       setIsLoading(prevLoading => !prevLoading);
