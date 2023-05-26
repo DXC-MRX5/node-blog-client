@@ -72,8 +72,8 @@ const Home = () => {
           )
         })}</div>}
       </div>
-      <div className="btndiv">{load ? <button onClick={loadMore} style={{border:'none', backgroundColor:'inherit', cursor:'pointer'}}><BsFillArrowRightSquareFill style={{width:'40px', height:'40px'}}/> Next</button>
-      : <button onClick={loadMore} style={{border:'none', backgroundColor:'inherit', cursor:'pointer'}}><BsFillArrowLeftSquareFill style={{width:'40px', height:'40px'}}/> Previous</button>}</div>
+      <div className="btndiv">{load ? <button onClick={loadMore} style={{border:'none', backgroundColor:'inherit', cursor:'pointer', color:'#05386B'}}><BsFillArrowRightSquareFill style={{width:'40px', height:'40px'}}/></button>
+      : <button onClick={loadMore} style={{border:'none', backgroundColor:'inherit', cursor:'pointer', color:'#05386B'}}><BsFillArrowLeftSquareFill style={{width:'40px', height:'40px'}}/></button>}</div>
       <div className="Home-cntnr">
       <div className="home-catagory-cntnr">
       <h1>Top Articles</h1>
@@ -169,7 +169,6 @@ const Home = () => {
         </div>
       </div>
       <div className="rightBar">
-        <div className="adBox"><h3>Advertisement</h3></div>
         <div className="top-cntnr">
         <h1>Top Posts</h1>
           {latest.filter(
@@ -185,11 +184,12 @@ const Home = () => {
                     <h6>{elmnt.date}</h6>
                   </div>
                   <h2>{index+1}</h2>
-                  </div>
+              </div>
             )
           })
           }
         </div>
+        <div className="adBox"><h3>Advertisement</h3></div>
       </div>
     </div></>}
     </div>
