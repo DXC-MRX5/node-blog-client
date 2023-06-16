@@ -12,13 +12,13 @@ const Home = () => {
   const [latest, setLatest] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/home")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/home")
     .then((response)=>{
       setData(response.data);
     })
   }, [])
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/latest")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/latest")
     .then((response)=>{
       setLatest(response.data);
       setIsLoading(prevLoading => !prevLoading);
@@ -47,7 +47,7 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return(
             <div key={index} className="latest-element">
-            <Link to={"/display/"+elmnt.id}>
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='latest-poster'/>
             </Link>
             <div className="latestBox">
@@ -61,7 +61,8 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return(
             <div key={index} className="latest-element">
-            <Link to={"/display/"+elmnt.id}>
+            {console.log(elmnt._id)}
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='latest-poster'/>
             </Link>
             <div className="latestBox">
@@ -83,7 +84,7 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return (
             <div key={index} className="home-catagory-element">
-            <Link to={"/display/"+elmnt.id}>
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='catagory-poster'/>
             </Link>
             <div className="topicBox">
@@ -101,7 +102,7 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return (
             <div key={index} className="home-catagory-element">
-            <Link to={"/display/"+elmnt.id}>
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='catagory-poster'/>
             </Link>
             <div className="topicBox">
@@ -119,7 +120,7 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return (
             <div key={index} className="home-catagory-element">
-            <Link to={"/display/"+elmnt.id}>
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='catagory-poster'/>
             </Link>
             <div className="topicBox">
@@ -137,7 +138,7 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return (
             <div key={index} className="home-catagory-element">
-            <Link to={"/display/"+elmnt.id}>
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='catagory-poster'/>
             </Link>
             <div className="topicBox">
@@ -155,7 +156,7 @@ const Home = () => {
         ).map((elmnt,index)=>{
           return (
             <div key={index} className="home-catagory-element">
-            <Link to={"/display/"+elmnt.id}>
+            <Link to={"/display/"+elmnt.ind}>
             <img src={elmnt.poster} alt='' className='catagory-poster'/>
             </Link>
             <div className="topicBox">
@@ -176,7 +177,7 @@ const Home = () => {
             ).map((elmnt,index)=>{
             return(
               <div key={index} className="topBox">
-                  <Link to={"/display/"+elmnt.id}>
+                  <Link to={"/display/"+elmnt.ind}>
                   <img src={elmnt.poster} alt='' className='top-poster'/>
                   </Link>
                   <div className="topTopic">

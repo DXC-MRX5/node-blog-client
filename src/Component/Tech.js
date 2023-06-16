@@ -3,19 +3,19 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import {BsFillArrowDownSquareFill, BsFillArrowUpSquareFill} from 'react-icons/bs'
 
-const Food = () => {
+const Tech = () => {
   const [data, setData] = useState();
   const [top, setTop] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/tech")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/tech")
     .then((response)=>{
       setData(response.data);
     })
     .catch((error)=>console.log(error))
   }, [])
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/toptech")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/toptech")
     .then((response)=>{
       setTop(response.data);
       setIsLoading(prevLoading => !prevLoading);
@@ -32,11 +32,11 @@ const Food = () => {
     <h1 className='catagory-heading'>Technology</h1>
       <div className='cntxtdata-cntnr'>
       {load ? <>{data.filter((data)=>
-            data.id < 45
+            data.ind < 45
           ).map((elmnt,index)=>{
             return(
               <div key={index} className='catagory-element'>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
                 <img src={elmnt.poster} alt='' className='catagory-poster'/>
                 </Link>
                 <div>
@@ -51,7 +51,7 @@ const Food = () => {
           {data.map((elmnt,index)=>{
             return(
               <div key={index} className='catagory-element-new'>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
                 <img src={elmnt.poster} alt='' className='catagory-poster'/>
                 </Link>
                 <div>
@@ -74,7 +74,7 @@ const Food = () => {
         {top.map((elmnt,index)=>{
           return(
             <div className='topBox'>
-                  <Link to={"/display/"+elmnt.id}>
+                  <Link to={"/display/"+elmnt.ind}>
                   <img src={elmnt.poster} alt='' className='top-poster'/>
                   </Link>
                   <div className="topTopic">
@@ -93,4 +93,4 @@ const Food = () => {
   )
 }
 
-export default Food
+export default Tech;

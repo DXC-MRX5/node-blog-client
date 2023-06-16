@@ -8,14 +8,14 @@ const Bollywood = () => {
   const [top, setTop] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/bollywood")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/bollywood")
     .then((response)=>{
       setData(response.data);
     })
     .catch((error)=>console.log(error))
   }, [])
   useEffect(() => {
-    axios.get("https://node-blog-server.vercel.app/api/blog/topbolly")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topbolly")
       .then((response) => {
         setTop(response.data);
         setIsLoading(prevLoading => !prevLoading);
@@ -33,11 +33,11 @@ const Bollywood = () => {
     <h1 className='catagory-heading'>Bollywood</h1>
       <div className='cntxtdata-cntnr'>
       {load ? <>{data.filter((data)=>
-            data.id < 15
+            data.ind < 15
           ).map((elmnt,index)=>{
             return(
               <div key={index} className='catagory-element'>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
                 <img src={elmnt.poster} alt='' className='catagory-poster'/>
                 </Link>
                 <div>
@@ -52,7 +52,7 @@ const Bollywood = () => {
           {data.map((elmnt,index)=>{
             return(
               <div key={index} className='catagory-element-new'>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
                 <img src={elmnt.poster} alt='' className='catagory-poster'/>
                 </Link>
                 <div>
@@ -75,7 +75,7 @@ const Bollywood = () => {
         {top.map((elmnt,index)=>{
           return(
             <div className='topBox'>
-                  <Link to={"/display/"+elmnt.id}>
+                  <Link to={"/display/"+elmnt.ind}>
                   <img src={elmnt.poster} alt='' className='top-poster'/>
                   </Link>
                   <div className="topTopic">

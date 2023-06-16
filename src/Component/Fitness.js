@@ -8,14 +8,14 @@ const Fitness = () => {
   const [top, setTop] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/fitness")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/fitness")
     .then((response)=>{
       setData(response.data);
     })
     .catch((error)=>console.log(error))
   }, [])
   useEffect(()=>{
-    axios.get("https://node-blog-server.vercel.app/api/blog/topfit")
+    axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topfit")
     .then((response)=>{
       setTop(response.data);
       setIsLoading(prevLoading => !prevLoading);
@@ -32,11 +32,11 @@ const Fitness = () => {
     <h1 className='catagory-heading'>Fitness</h1>
       <div className='cntxtdata-cntnr'>
       {load ? <>{data.filter((data)=>
-            data.id < 25
+            data.ind < 25
           ).map((elmnt,index)=>{
             return(
               <div key={index} className='catagory-element'>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
                 <img src={elmnt.poster} alt='' className='catagory-poster'/>
                 </Link>
                 <div>
@@ -51,7 +51,7 @@ const Fitness = () => {
           {data.map((elmnt,index)=>{
             return(
               <div key={index} className='catagory-element-new'>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
                 <img src={elmnt.poster} alt='' className='catagory-poster'/>
                 </Link>
                 <div>
@@ -74,7 +74,7 @@ const Fitness = () => {
         {top.map((elmnt,index)=>{
           return(
             <div className='topBox'>
-                  <Link to={"/display/"+elmnt.id}>
+                  <Link to={"/display/"+elmnt.ind}>
                   <img src={elmnt.poster} alt='' className='top-poster'/>
                   </Link>
                   <div className="topTopic">

@@ -15,18 +15,20 @@ const Display = () => {
   const [gen, setGen] = useState();
   useEffect(()=>{
     async function fetchData(){
-      await axios.get(`https://node-blog-server.vercel.app/api/blog/actual?id=${Data}`)
+      await axios.get(`https://node-blog-server-nzei.onrender.com/api/blog/actual?ind=${Data}`)
       .then((response)=>{
         setData(response.data);
-        setGen(response.data[0].gen);
+        console.log(data);
+        setGen(response.data.gen);
+        console.log(gen);
       })
       .catch((error)=>console.log(error))
     }
     fetchData();
-    },[Data])
+    },[Data, data, gen])
   useEffect(()=>{
     async function fetchMoreData(){
-      await axios.get("https://node-blog-server.vercel.app/api/blog/more")
+      await axios.get("https://node-blog-server-nzei.onrender.com/api/blog/more")
       .then((response)=>{
         setMore(response.data)
       })
@@ -47,17 +49,17 @@ const Display = () => {
     }
   }
   const renderCont=()=>{
-    switch (data[0].cat){
+    switch (data.cat){
     case 'latest':
     return(
       <><div className='getbox'><p>Get Started</p></div>
       <div className='Actualdata'>
-        <h1>{data[0].heading}</h1>
-        <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-        <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-        <h5>{data[0].date}</h5>
-        <h3>{data[0].subheading}</h3>
-        <p className='dscrptn'>{data[0].description}</p>
+        <h1>{data.heading}</h1>
+        <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+        <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+        <h5>{data.date}</h5>
+        <h3>{data.subheading}</h3>
+        <p className='dscrptn'>{data.description}</p>
         <ShareOnFacebookButton/>
       </div>
       <h2 className='more-heading'>More from TheSIREN</h2>
@@ -65,7 +67,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -83,13 +85,13 @@ const Display = () => {
       return(
       <><div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].title}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h5>{data[0].date}</h5>
-          <h3>{data[0].heading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
-          <a href={data[0].process} target='blank' style={{color:'#05386B', display:'flex', alignItems:'center', gap:'10px'}}><span><FaYoutube style={{width:'35px', height:'35px'}}/></span>Check the recipe</a>
+          <h1>{data.title}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h5>{data.date}</h5>
+          <h3>{data.heading}</h3>
+          <p className='dscrptn'>{data.description}</p>
+          <a href={data.process} target='blank' style={{color:'#05386B', display:'flex', alignItems:'center', gap:'10px'}}><span><FaYoutube style={{width:'35px', height:'35px'}}/></span>Check the recipe</a>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -97,7 +99,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -115,14 +117,14 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].title}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h4>A movie released in {data[0].date}</h4>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h4>Genre : {data[0].genre}</h4>
-          <h3>Director : {data[0].derector}</h3>
-          <h3>Cast : {data[0].cast}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.title}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h4>A movie released in {data.date}</h4>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h4>Genre : {data.genre}</h4>
+          <h3>Director : {data.derector}</h3>
+          <h3>Cast : {data.cast}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -130,7 +132,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -148,14 +150,14 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].title}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h4>A movie released in {data[0].date}</h4>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h4>Genre : {data[0].genre}</h4>
-          <h3>Director : {data[0].derector}</h3>
-          <h3>Cast : {data[0].cast}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.title}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h4>A movie released in {data.date}</h4>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h4>Genre : {data.genre}</h4>
+          <h3>Director : {data.derector}</h3>
+          <h3>Cast : {data.cast}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -163,7 +165,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -181,13 +183,13 @@ const Display = () => {
       return(
       <><div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].title}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h5>{data[0].date}</h5>
-          <h3>{data[0].heading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
-          <p className='prcs'><span style={{fontSize:'22px', textDecoration:'underLine'}}>Process:</span>  {data[0].process}</p>
+          <h1>{data.title}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h5>{data.date}</h5>
+          <h3>{data.heading}</h3>
+          <p className='dscrptn'>{data.description}</p>
+          <p className='prcs'><span style={{fontSize:'22px', textDecoration:'underLine'}}>Process:</span>  {data.process}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -195,7 +197,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -213,12 +215,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -226,7 +228,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -244,12 +246,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -257,7 +259,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -275,12 +277,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -288,7 +290,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -306,12 +308,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -319,7 +321,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -337,12 +339,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -350,7 +352,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -368,12 +370,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -381,7 +383,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -399,12 +401,12 @@ const Display = () => {
       return(<>
       <div className='getbox'><p>Get Started</p></div>
         <div className='Actualdata'>
-          <h1>{data[0].heading}</h1>
-          <img src={data[0].poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
-          <h5>{data[0].date}</h5>
-          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data[0].author}</h4>
-          <h3>{data[0].subheading}</h3>
-          <p className='dscrptn'>{data[0].description}</p>
+          <h1>{data.heading}</h1>
+          <img src={data.poster} alt='' style={{width:'55vw', borderRadius:'15px'}}/>
+          <h5>{data.date}</h5>
+          <h4 style={{display:"flex", alignItems:"center", gap: '30px'}}><img src={handleIcon()} alt='' style={{width:"80px", height:'80px', borderRadius: '50%'}}/>  {data.author}</h4>
+          <h3>{data.subheading}</h3>
+          <p className='dscrptn'>{data.description}</p>
           <ShareOnFacebookButton/>
         </div>
         <h2 className='more-heading'>More from TheSIREN</h2>
@@ -412,7 +414,7 @@ const Display = () => {
         {more.map((elmnt, index)=>{
           return(
             <div className='more-element' key={index}>
-              <Link to={"/display/"+elmnt.id}>
+              <Link to={"/display/"+elmnt.ind}>
               <img src={elmnt.poster} alt='' className='catagory-poster'/>
               </Link>
               <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
