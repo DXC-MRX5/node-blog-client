@@ -18,10 +18,10 @@ const Header = () => {
         </div>
         <div className='mobileNav'>
         {down ? <div className='downon'>
-          <button className='hmbtn btn' onClick={()=>navi('/home')}><BiHome style={{width:'40px', height:'40px', color:'#05386B'}}/></button>
+          <button className='hmbtn btn' onClick={()=>navi('/')}><BiHome style={{width:'40px', height:'40px', color:'#05386B'}}/></button>
           <button className='mnbtn btn' onClick={handleDown}><BiMenu style={{width:'40px', height:'40px', color:'#05386B'}}/></button>
         </div>: <div className='downoff'>
-          <button className='hmbtn btn' onClick={()=>navi('/home')}><BiHome style={{width:'40px', height:'40px', color:'#05386B'}}/></button>
+          <button className='hmbtn btn' onClick={()=>navi('/')}><BiHome style={{width:'40px', height:'40px', color:'#05386B'}}/></button>
           <div className='moblinks'>
             <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/hollywood'>Hollywood</NavLink></p>
             <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/bollywood'>Bollywood</NavLink></p>
@@ -33,7 +33,7 @@ const Header = () => {
         </div>}
         </div>
         <div className='links'>
-            <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/home'>Home</NavLink></p>
+            <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/'>Home</NavLink></p>
             <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/hollywood'>Hollywood</NavLink></p>
             <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/bollywood'>Bollywood</NavLink></p>
             <p><NavLink className={(navdata)=>navdata.isActive ? 'def' : 'abc'} to='/food'>Food</NavLink></p>

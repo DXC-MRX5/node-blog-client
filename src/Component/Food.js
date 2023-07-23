@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import {BsFillArrowDownSquareFill, BsFillArrowUpSquareFill} from 'react-icons/bs'
+import SimpleBackdrop from './Backdrop';
 
 const Food = () => {
   const [data, setData] = useState();
   const [top, setTop] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/food")
     .then((response)=>{
@@ -18,7 +19,7 @@ const Food = () => {
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topfood")
     .then((response)=>{
       setTop(response.data);
-      setIsLoading(prevLoading => !prevLoading);
+      // setIsLoading(prevLoading => !prevLoading);
     })
     .catch((error)=>console.log(error))
   }, [])
@@ -28,7 +29,7 @@ const Food = () => {
   }
   return (
     <div className='Food'>
-    {isLoading ? <h2>loading...</h2> : <><div className='catagory-leftPart'>
+    {(data && top) ? <><div className='catagory-leftPart'>
     <h1 className='catagory-heading'>Food</h1>
       <div className='cntxtdata-cntnr'>
       {load ? <>{data.filter((data)=>
@@ -87,8 +88,9 @@ const Food = () => {
         })}
       </div>
       <div className="catagory-adBox"><h3>Advertisement</h3></div>
-    </div></>
-    }
+    </div>
+    </>
+    : <SimpleBackdrop/>}
     </div>
   )
 }

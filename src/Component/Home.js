@@ -6,11 +6,12 @@ import static1 from './images/static1.jpg'
 import static2 from './images/static2.jpg'
 import { Link } from "react-router-dom"
 import {BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill} from 'react-icons/bs'
+import SimpleBackdrop from './Backdrop';
 
 const Home = () => {
   const [data, setData] = useState();
   const [latest, setLatest] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/home")
     .then((response)=>{
@@ -21,7 +22,7 @@ const Home = () => {
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/latest")
     .then((response)=>{
       setLatest(response.data);
-      setIsLoading(prevLoading => !prevLoading);
+      // setIsLoading(prevLoading => !prevLoading);
     })
     .catch((error)=>console.log(error))
   }, [])
@@ -38,8 +39,7 @@ const Home = () => {
       <img src={static2} alt="" className="staticimage"/>
       </div>
       </div>
-      {isLoading ? <h2>Loading...</h2>
-      : <>
+      {(data && latest) ? <>
       <div className="latest-cntnr">
       <h1>Latest Stories</h1>
       {load ? <div className="before">{latest.filter(
@@ -192,7 +192,9 @@ const Home = () => {
         </div>
         <div className="adBox"><h3>Advertisement</h3></div>
       </div>
-    </div></>}
+    </div>
+    </>
+    : <SimpleBackdrop/>}
     </div>
   )
 }

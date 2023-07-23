@@ -549,6 +549,9 @@
         height: 60vh;
         border: 2px solid #05386B;
     }
+    .top-cntnr h1{
+        margin: auto;
+    }
     .topBox{
         width: 90%;
         margin-top: 30px;
@@ -625,5 +628,9 @@
         gap: 6px;
         padding-bottom: 10px;
         border-bottom: 1px solid #063f12;
+    }
+    .catagory-adBox{
+        width: 90%;
+        margin: 2em auto;
     }
 }

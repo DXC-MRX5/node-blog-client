@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import {BsFillArrowDownSquareFill, BsFillArrowUpSquareFill} from 'react-icons/bs'
+import SimpleBackdrop from './Backdrop';
 
 const Hollywood = () => {
   const [data, setData] = useState();
   const [top, setTop] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/hollywood")
     .then((response)=>{
@@ -18,7 +18,6 @@ const Hollywood = () => {
     axios.get("https://node-blog-server-nzei.onrender.com/api/blog/topholly")
     .then((response)=>{
       setTop(response.data);
-      setIsLoading(prevLoading => !prevLoading);
     })
     .catch((error)=>console.log(error))
   }, [])
@@ -28,7 +27,7 @@ const Hollywood = () => {
   }
   return (
     <div className='Hollywood'>
-    {isLoading ? <h2>loading...</h2> : <><div className='catagory-leftPart'>
+    {(data && top) ? <><div className='catagory-leftPart'>
     <h1 className='catagory-heading'>Hollywood</h1>
       <div className='cntxtdata-cntnr'>
       {load ? <>{data.filter((data)=>
@@ -87,8 +86,9 @@ const Hollywood = () => {
         })}
       </div>
       <div className="catagory-adBox"><h3>Advertisement</h3></div>
-    </div></>
-    }
+    </div>
+    </>
+    : <SimpleBackdrop/>}
     </div>
   )
 }
